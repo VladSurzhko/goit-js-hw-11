@@ -88,7 +88,7 @@ const photoInfo =
         </div>`;
 
         photo.insertAdjacentHTML('beforeend', photoInfo);
-});
+}).join("");
 } catch (error) {
     console.log(error);
   }

@@ -1,0 +1,60 @@
+body{
+background-color: antiquewhite    
+}
+
+img{
+    height: 250px;
+    width: 370px;
+    max-width: 400px;
+    max-height: 250px;
+    border-radius: 20px
+}
+
+b{
+display: flex;
+flex-direction: row;    
+}
+
+.search-form{
+display: flex;
+justify-content: center;
+margin-top: 20px;    
+}
+.search{
+width: 350px;
+height: 20px;
+border: 5px;
+border-radius: 50px;
+}
+.btn{
+background-color: lightblue;
+border: 0px;
+border-radius: 30px;
+margin-left: 10px;
+}
+
+.btn:focus{
+   
+}
+
+.gallery{
+margin-top: 30px;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+gap: 50px;
+margin-top: 70px;
+
+}
+.photo-card{
+    
+}
+/* .info{
+display: flex;
+flex-direction: row;
+align-items: center;    
+} */
+/* .info-item{
+display: flex;
+flex-direction: row;    
+} */

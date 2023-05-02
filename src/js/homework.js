@@ -3,7 +3,10 @@ import Notiflix from 'notiflix';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-
+const lightbox = new SimpleLightbox('.gallery a', { 
+    captions: true,
+    captionDelay: 250,
+  })
 
 const searchForm = document.querySelector('.search-form');
 const photo = document.querySelector('.gallery');
@@ -39,11 +42,14 @@ async function searchImg(event) {
       return;
     }
 
+    currentSearchQuery = searchQuery;
+    page = 1;
 
     const photoHTML = images.map(image => {
       const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = image;
       return `
         <div class="photo-card">
+        <a href="${largeImageURL}">
           <img src="${webformatURL}" alt="${tags}" 
           data-source="${largeImageURL}" loading="lazy" />
           <div class="info">
@@ -55,7 +61,7 @@ async function searchImg(event) {
         </div>
       `;
     }).join('');
-    Notiflix.Notify.info(`${totalHits}`);
+    Notiflix.Notify.info(`Hooray! We found ${totalHits} images`);
     photo.innerHTML = photoHTML;
     lightbox.refresh();
     if (totalHits > 40) {
@@ -66,8 +72,6 @@ async function searchImg(event) {
   }
 }
 
-currentSearchQuery = searchQuery;
-    page = 1;
 
 async function loadMoreImages() {
     try {
@@ -97,7 +101,7 @@ async function loadMoreImages() {
         const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = image;
         return `
           <div class="photo-card">
-          <a class="photka" href="${largeImageURL}">
+          <a href="${largeImageURL}">
           <img src="${webformatURL}" alt="${tags}" loading="lazy" />
             <div class="info">
               <p class="info-item"><b>Likes: ${likes}</b></p>
@@ -119,17 +123,9 @@ async function loadMoreImages() {
     }
   }
 
-  const lightbox = new SimpleLightbox('.gallery a', { 
-    captions: true,
-    captionDelay: 250,
-  })
 
-// const lightbox = new SimpleLightbox('.gallery img', { 
-//     captions: true,
-//     captionDelay: 250,
-//     captionsData: 'alt', 
-//   });
-// console.log(lightbox)
+
+
 
 
 // async function fetchHedler() {

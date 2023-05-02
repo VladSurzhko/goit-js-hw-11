@@ -3,10 +3,7 @@ import Notiflix from 'notiflix';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-const lightbox = new SimpleLightbox('.gallery a', { 
-    captions: true,
-    captionDelay: 250,
-  })
+
 
 const searchForm = document.querySelector('.search-form');
 const photo = document.querySelector('.gallery');
@@ -36,6 +33,7 @@ async function searchImg(event) {
       },
     });
     const images = response.data.hits;
+    const totalHits = response.data.totalHits;
     if (images.length === 0) {
       Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
       return;
@@ -120,6 +118,11 @@ async function loadMoreImages() {
       console.log(error);
     }
   }
+
+  const lightbox = new SimpleLightbox('.gallery a', { 
+    captions: true,
+    captionDelay: 250,
+  })
 
 // const lightbox = new SimpleLightbox('.gallery img', { 
 //     captions: true,

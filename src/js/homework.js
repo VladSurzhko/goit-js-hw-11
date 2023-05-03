@@ -38,8 +38,10 @@ async function searchImg(event) {
     const images = response.data.hits;
     const totalHits = response.data.totalHits;
     if (images.length === 0) {
-      Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
-      return;
+    photo.innerHTML = "";
+    loadMoreBtn.style.display = "";
+    Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+    return;
     }
 
     currentSearchQuery = searchQuery;
